@@ -97,7 +97,7 @@ class FCN8s_lightnn(nn.Module):
             if type(m) in [nn.Conv2d, nn.Linear, nn.ConvTranspose2d]:
                 m.weight.data.clamp_(-1, 1)
                 m.weight.org = m.weight.data.clone()
-                m.weight.data = Quantize_lightnn(self.weight.org, 'det', 
+                m.weight.data = Quantize_lightnn(m.weight.org, 'det', 
                             numShifts=1, shiftBits=7)
 
         x_size = x.size()
