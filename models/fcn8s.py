@@ -2,8 +2,8 @@ import torch
 from torch import nn
 from torchvision import models
 
-from ..utils import get_upsampling_weight
-from .config import vgg16_path, vgg16_caffe_path
+from utils import get_upsampling_weight
+from config import vgg16_path, vgg16_caffe_path
 
 
 # This is implemented in full accordance with the original one (https://github.com/shelhamer/fcn.berkeleyvision.org)
