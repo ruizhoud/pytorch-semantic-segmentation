@@ -10,7 +10,7 @@ from .config import vgg16_path, vgg16_caffe_path
 class FCN8s(nn.Module):
     def __init__(self, num_classes, pretrained=True, caffe=False):
         super(FCN8s, self).__init__()
-        vgg = models.vgg16()
+        vgg = models.vgg16_bn()
         if pretrained:
             if caffe:
                 # load the pretrained vgg16 used by the paper's author
