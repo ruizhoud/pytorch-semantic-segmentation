@@ -1,3 +1,6 @@
+import sys
+sys.path.append("../..")
+
 import datetime
 import os
 import random
