@@ -34,7 +34,7 @@ args = {
     'lr_patience': 100,  # large patience denotes fixed lr
     'snapshot': '',  # empty string denotes no snapshot
     'print_freq': 20,
-    'val_batch_size': 8, # was 16
+    'val_batch_size': 2, # was 16
     'val_save_to_img_file': False,
     'val_img_sample_rate': 0.05  # randomly sample some validation results to display
 }
