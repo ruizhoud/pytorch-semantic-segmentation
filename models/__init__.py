@@ -2,6 +2,7 @@
 # from .fcn16s import *
 # from .fcn32s import *
 from .fcn8s import *
+from .fcn8s_lightnn import *
 # from .gcn import *
 # from .psp_net import *
 # from .seg_net import *
