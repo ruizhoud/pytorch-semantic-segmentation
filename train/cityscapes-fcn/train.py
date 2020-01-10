@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/home/rzding")
+sys.path.append("/home/rzding/pytorch-semantic-segmentation")
 
 import datetime
 import os
