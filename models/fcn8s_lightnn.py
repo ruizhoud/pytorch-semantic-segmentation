@@ -36,7 +36,7 @@ def Quantize_lightnn(tensor,quant_mode='det',numShifts=2,shiftBits=7):
 # This is implemented in full accordance with the original one (https://github.com/shelhamer/fcn.berkeleyvision.org)
 class FCN8s_lightnn(nn.Module):
     def __init__(self, num_classes, pretrained=True, caffe=False):
-        super(FCN8s, self).__init__()
+        super(FCN8s_lightnn, self).__init__()
         vgg = models.vgg16()
         if pretrained:
             if caffe:
