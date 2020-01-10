@@ -1,5 +1,5 @@
-# import sys
-# sys.path.append("../..")
+import sys
+sys.path.append("/home/rzding")
 
 import datetime
 import os
