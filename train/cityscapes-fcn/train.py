@@ -16,7 +16,7 @@ import utils.joint_transforms as joint_transforms
 import utils.transforms as extended_transforms
 from datasets import cityscapes
 from models import *
-# from utils import check_mkdir, evaluate, AverageMeter, CrossEntropyLoss2d
+from utils import check_mkdir, evaluate, AverageMeter, CrossEntropyLoss2d
 
 cudnn.benchmark = True
 
