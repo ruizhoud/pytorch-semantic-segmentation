@@ -7,7 +7,7 @@ root = 'pretrained'
 # res152_path = os.path.join(root, 'ResNet', 'resnet152-b121ed2d.pth')
 # inception_v3_path = os.path.join(root, 'Inception', 'inception_v3_google-1a9a5a14.pth')
 # vgg19_bn_path = os.path.join(root, 'VggNet', 'vgg19_bn-c79401a0.pth')
-vgg16_path = os.path.join(root, '')
+vgg16_path = os.path.join(root, 'vgg16-397923af.pth')
 vgg16_bn_path = os.path.join(root, 'vgg16_bn-6c64b313.pth')
 # dense201_path = os.path.join(root, 'DenseNet', 'densenet201-4c113574.pth')
 
