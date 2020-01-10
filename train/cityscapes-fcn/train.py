@@ -20,7 +20,7 @@ from utils import check_mkdir, evaluate, AverageMeter, CrossEntropyLoss2d
 
 cudnn.benchmark = True
 
-ckpt_path = '../../ckpt'
+ckpt_path = 'ckpt'
 exp_name = 'cityscapes-fcn8s'
 writer = SummaryWriter(os.path.join(ckpt_path, 'exp', exp_name))
 
