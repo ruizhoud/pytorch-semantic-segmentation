@@ -99,7 +99,7 @@ class FCN8s_lightnn(nn.Module):
                 m.weight.org = m.weight.data.clone()
                 # m.weight.data = Quantize_lightnn(m.weight.org, 'det', numShifts=2, shiftBits=7)
                 std = m.weight.data.std()
-                m.weight.data = ((m.weight.data / std) * 256.).round() / 256.
+                m.weight.data = ((m.weight.data / std) * 256.).round() / 256. * std
 
         x_size = x.size()
         pool3 = self.features3(x)
