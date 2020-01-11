@@ -130,8 +130,7 @@ def train(train_loader, net, criterion, optimizer, epoch, train_args):
 
         for p in list(net.parameters()):
             if hasattr(p, 'org'):
-                # p.data.copy_(p.org)
-                pass
+                p.data.copy_(p.org)
 
         optimizer.step()
 
