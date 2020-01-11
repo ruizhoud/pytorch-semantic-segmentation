@@ -96,7 +96,8 @@ class FCN8s_lightnn(nn.Module):
         for m in self.modules():
             if type(m) in [nn.Conv2d, nn.Linear, nn.ConvTranspose2d]:
                 # m.weight.data.clamp_(-1, 1)
-                m.weight.org = m.weight.data.clone()
+                # m.weight.org = m.weight.data.clone()
+                pass
                 # m.weight.data = (m.weight.data * 128).round() / 128 # Quantize_lightnn(m.weight.org, 'det', numShifts=1, shiftBits=7)
 
         x_size = x.size()
