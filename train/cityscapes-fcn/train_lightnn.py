@@ -27,8 +27,8 @@ writer = SummaryWriter(os.path.join(ckpt_path, 'exp', exp_name))
 args = {
     'train_batch_size': 8, # was 16
     'epoch_num': 500,
-    'lr': 1e-10,
-    'weight_decay': 5e-4,
+    'lr': 1e-11,
+    'weight_decay': 0, # 5e-4,
     'input_size': (256, 512),
     'momentum': 0.95,
     'lr_patience': 100,  # large patience denotes fixed lr
@@ -87,12 +87,12 @@ def main():
 
     criterion = CrossEntropyLoss2d(size_average=False, ignore_index=cityscapes.ignore_label).cuda()
 
-    optimizer = optim.SGD([
+    optimizer = optim.Adam([
         {'params': [param for name, param in net.named_parameters() if name[-4:] == 'bias'],
          'lr': 2 * args['lr']},
         {'params': [param for name, param in net.named_parameters() if name[-4:] != 'bias'],
          'lr': args['lr'], 'weight_decay': args['weight_decay']}
-    ], momentum=args['momentum'])
+    ])
 
     if len(args['snapshot']) > 0:
         optimizer.load_state_dict(torch.load(os.path.join(ckpt_path, exp_name, 'opt_' + args['snapshot'])))
