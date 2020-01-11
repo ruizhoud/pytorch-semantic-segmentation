@@ -87,12 +87,12 @@ def main():
 
     criterion = CrossEntropyLoss2d(size_average=False, ignore_index=cityscapes.ignore_label).cuda()
 
-    optimizer = optim.Adam([
+    optimizer = optim.SGD([
         {'params': [param for name, param in net.named_parameters() if name[-4:] == 'bias'],
          'lr': 2 * args['lr']},
         {'params': [param for name, param in net.named_parameters() if name[-4:] != 'bias'],
          'lr': args['lr'], 'weight_decay': args['weight_decay']}
-    ])
+    ], momentum=args['momentum'])
 
     if len(args['snapshot']) > 0:
         optimizer.load_state_dict(torch.load(os.path.join(ckpt_path, exp_name, 'opt_' + args['snapshot'])))
