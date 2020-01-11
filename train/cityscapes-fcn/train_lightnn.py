@@ -27,7 +27,7 @@ writer = SummaryWriter(os.path.join(ckpt_path, 'exp', exp_name))
 args = {
     'train_batch_size': 8, # was 16
     'epoch_num': 500,
-    'lr': 1e-11,
+    'lr': 1e-5,
     'weight_decay': 0, # 5e-4,
     'input_size': (256, 512),
     'momentum': 0.95,
