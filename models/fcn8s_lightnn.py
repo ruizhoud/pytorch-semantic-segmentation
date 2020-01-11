@@ -23,7 +23,7 @@ def Quantize_lightnn_1(tensor,quant_mode='det',numShifts=1,shiftBits=7):
 
 def Quantize_lightnn(tensor,quant_mode='det',numShifts=2,shiftBits=7):
     assert numShifts >= 1, numShifts
-    residual = tensor.copy()
+    residual = tensor.clone()
     result = None
     for i in range(numShifts):
         result_i = Quantize_lightnn_1(residual, quant_mode=quant_mode,
