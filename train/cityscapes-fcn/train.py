@@ -27,7 +27,7 @@ writer = SummaryWriter(os.path.join(ckpt_path, 'exp', exp_name))
 args = {
     'train_batch_size': 8, # was 16
     'epoch_num': 500,
-    'lr': 1e-10,
+    'lr': 1e-5,
     'weight_decay': 5e-4,
     'input_size': (256, 512),
     'momentum': 0.95,
@@ -87,12 +87,13 @@ def main():
 
     criterion = CrossEntropyLoss2d(size_average=False, ignore_index=cityscapes.ignore_label).cuda()
 
-    optimizer = optim.SGD([
+    optimizer = optim.Adam([
         {'params': [param for name, param in net.named_parameters() if name[-4:] == 'bias'],
          'lr': 2 * args['lr']},
         {'params': [param for name, param in net.named_parameters() if name[-4:] != 'bias'],
          'lr': args['lr'], 'weight_decay': args['weight_decay']}
-    ], momentum=args['momentum'])
+    ])
+    # ], momentum=args['momentum'])
 
     if len(args['snapshot']) > 0:
         optimizer.load_state_dict(torch.load(os.path.join(ckpt_path, exp_name, 'opt_' + args['snapshot'])))
@@ -179,8 +180,8 @@ def validate(val_loader, net, criterion, optimizer, epoch, train_args, restore, 
         snapshot_name = 'epoch_%d_loss_%.5f_acc_%.5f_acc-cls_%.5f_mean-iu_%.5f_fwavacc_%.5f_lr_%.10f' % (
             epoch, val_loss.avg, acc, acc_cls, mean_iu, fwavacc, optimizer.param_groups[1]['lr']
         )
-        torch.save(net.state_dict(), os.path.join(ckpt_path, exp_name, snapshot_name + '.pth'))
-        torch.save(optimizer.state_dict(), os.path.join(ckpt_path, exp_name, 'opt_' + snapshot_name + '.pth'))
+        # torch.save(net.state_dict(), os.path.join(ckpt_path, exp_name, snapshot_name + '.pth'))
+        # torch.save(optimizer.state_dict(), os.path.join(ckpt_path, exp_name, 'opt_' + snapshot_name + '.pth'))
 
         if train_args['val_save_to_img_file']:
             to_save_dir = os.path.join(ckpt_path, exp_name, str(epoch))
