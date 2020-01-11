@@ -23,7 +23,7 @@ def Quantize_lightnn_1(tensor,quant_mode='det',numShifts=1,shiftBits=7):
 
 def Quantize_lightnn(tensor,quant_mode='det',numShifts=2,shiftBits=7):
     assert numShifts >= 1, numShifts
-    residual = tensor
+    residual = tensor.copy()
     result = None
     for i in range(numShifts):
         result_i = Quantize_lightnn_1(residual, quant_mode=quant_mode,
@@ -98,7 +98,6 @@ class FCN8s_lightnn(nn.Module):
                 m.weight.data.clamp_(-1, 1)
                 m.weight.org = m.weight.data.clone()
                 m.weight.data = Quantize_lightnn(m.weight.org, 'det', numShifts=2, shiftBits=7)
-                print(m.weight.data.mean())
 
         x_size = x.size()
         pool3 = self.features3(x)
