@@ -19,7 +19,7 @@ from utils import check_mkdir, evaluate, AverageMeter, CrossEntropyLoss2d
 cudnn.benchmark = True
 
 ckpt_path = 'ckpt'
-exp_name = 'voc-fcn8s-(caffe-vgg)-lightnn1'
+exp_name = 'voc-fcn8s-(caffe-vgg)-lightnn2'
 writer = SummaryWriter(os.path.join(ckpt_path, 'exp', exp_name))
 
 args = {

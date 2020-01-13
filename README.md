@@ -24,3 +24,12 @@ implemented in PyTorch
 1. DeepLab v3
 2. RefineNet
 3. More dataset (e.g. ADE)
+
+
+
+# train cityscapes 
+
+
+# train voc
+CUDA_VISIBLE_DEVICES=1 python -m train.voc-fcn-caffe.train 
+CUDA_VISIBLE_DEVICES=0 python -m train.voc-fcn-caffe.train_lightnn 
