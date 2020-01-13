@@ -19,7 +19,7 @@ from utils import check_mkdir, evaluate, AverageMeter, CrossEntropyLoss2d
 cudnn.benchmark = True
 
 ckpt_path = 'ckpt'
-exp_name = 'voc-fcn8s-(caffe-vgg)'
+exp_name = 'voc-fcn8s-(caffe-vgg)-lightnn1'
 writer = SummaryWriter(os.path.join(ckpt_path, 'exp', exp_name))
 
 args = {
@@ -36,7 +36,7 @@ args = {
 
 
 def main(train_args):
-    net = FCN8s(num_classes=voc.num_classes, caffe=True).cuda()
+    net = FCN8s_lightnn(num_classes=voc.num_classes, caffe=True).cuda()
 
     if len(train_args['snapshot']) == 0:
         curr_epoch = 1
@@ -120,7 +120,7 @@ def train(train_loader, net, criterion, optimizer, epoch, train_args):
 
         loss = criterion(outputs, labels) / N
         loss.backward()
-        
+
         for p in list(net.parameters()):
             if hasattr(p, 'org'):
                 p.data.copy_(p.org)
