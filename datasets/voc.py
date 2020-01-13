@@ -8,7 +8,7 @@ from torch.utils import data
 
 num_classes = 21
 ignore_label = 255
-root = '/media/b3-542/LIBRARY/Datasets/VOC'
+root = '/data/VOC'
 
 '''
 color map
